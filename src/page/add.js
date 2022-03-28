@@ -9,7 +9,6 @@ export default function Create() {
         const value = event.target.value;
         setInputs(values => ({...values,[name]:value}))
     }
-    
     const submitForm = () =>{
         console.log(inputs);
         http.post("/create.php",inputs).then((res)=>{
