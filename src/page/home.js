@@ -8,19 +8,20 @@ export default function Home() {
     }, []);
 
     const fetchAllUsers = () => {
-        http.get('list.php').then(res => {
-            setUsers(res.data);
+        http.get('user').then(res => {
+            setUsers(res.data.data);
         })
     }
     return (
         <div>
+            <div className="row">
             <h1>home</h1>
-            <table>
+            <table className="table">
                 <thead>
                     <tr>
-                        <th>no</th>
-                        <th>name</th>
-                        <th>age</th>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -29,12 +30,13 @@ export default function Home() {
                         <tr key={user.id}>
                             <th>{++index}</th>
                             <th>{user.name}</th>
-                            <th>{user.age}</th>
+                            <th>{user.email}</th>
                             <th>Action</th>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }
