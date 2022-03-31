@@ -25,7 +25,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        print_r($request->post());
+        try {
+            $product = User::create($request->all());
+            return $this->responseSuccess($product, 'New User Created Successfully !');
+        } catch (\Exception $exception) {
+            return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     public function show($id)
@@ -35,12 +40,17 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        return response()->json(User::whereId($id)->first());
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $user = User::whereId($id)->first();
+        $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+        ]);
+        return $this->responseSuccess( 'New User Update Successfully !');
     }
 
     public function destroy($id)

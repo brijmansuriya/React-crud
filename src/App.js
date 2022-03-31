@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Routes, Route, Link} from 'react-router-dom';
 import Home from './page/home.js'
 import Add from './page/add.js'
+import Edit from './page/edit.js'
 function App() {
   return (
     <div >
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/add' element={<Add/>} />
+          <Route path='/edit/:id' element={<Edit/>} />
         </Routes> 
       </div>
     </div>  

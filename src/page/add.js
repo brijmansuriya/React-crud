@@ -11,9 +11,9 @@ export default function Create() {
     }
     const submitForm = () =>{
         console.log(inputs);
-        http.post("/create.php",inputs).then((res)=>{
+        http.post("/user",inputs).then((res)=>{
             console.log(res);
-            // navigate('/');
+            navigate('/');
         })
     }
     
@@ -26,8 +26,11 @@ export default function Create() {
                     <label>Name</label>
                     <input type="text" name="name" className="form-control" value={inputs.name||''} onChange={handleChange}/>
 
-                    <label className="mt-2">Age</label>
-                    <input type="text" name="age" className="form-control" value={inputs.age||''} onChange={handleChange}/>
+                    <label className="mt-2">Email</label>
+                    <input type="text" name="email" className="form-control" value={inputs.email||''} onChange={handleChange}/>
+
+                    <label className="mt-2">Password</label>
+                    <input type="text" name="password" className="form-control" value={inputs.password||''} onChange={handleChange}/>
 
                     <button type="button" onClick={submitForm} className="btn btn-info mt-3">
                         Submit
