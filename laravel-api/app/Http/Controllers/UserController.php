@@ -55,6 +55,14 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+       
+        try {
+            $user = User::whereId($id)->first()->delete();
+            return $this->responseSuccess('User Delete Successfully !');
+        } catch (\Exception $exception) {
+            return $this->responseError(null, $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+        
+        
     }
 }

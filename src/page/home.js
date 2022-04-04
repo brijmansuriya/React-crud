@@ -13,6 +13,11 @@ export default function Home() {
             setUsers(res.data.data);
         })
     }
+    const deleteUser = (id) => {
+        http.delete('/user/'+id).then(res => {
+            fetchAllUsers();
+        })
+    }
     return (
         <div>
             <div className="row">
@@ -32,7 +37,11 @@ export default function Home() {
                             <th>{++index}</th>
                             <th>{user.name}</th>
                             <th>{user.email}</th>
-                            <th> <Link to={{pathname:"/edit/"+user.id}} className="btn btn-info" >Edit</Link></th>
+                            <th> 
+                                <Link to={{pathname:"/edit/"+user.id}} className="btn btn-info" >Edit</Link>
+
+                                <button type="button" className="btn btn-dangen" onClick={()=>{deleteUser(user.id)}}>Delete</button>
+                                </th>
                         </tr>
                     ))}
                 </tbody>

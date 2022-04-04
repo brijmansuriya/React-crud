@@ -1,7 +1,7 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import http from "../http";
 
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 export default function Edit(props) {
     const [inputs, setInputs] = useState({});
     const { id } = useParams();
@@ -27,7 +27,7 @@ export default function Edit(props) {
     }
     const submitForm = () => {
         console.log(inputs);
-        http.put("/user/"+id, inputs).then((res) => {
+        http.put("/user/" + id, inputs).then((res) => {
             console.log(res);
             navigate('/');
         })
@@ -45,10 +45,7 @@ export default function Edit(props) {
                     <label className="mt-2">Email</label>
                     <input type="text" name="email" className="form-control" value={inputs.email || ''} onChange={handleChange} />
 
-                   
-                    <button type="button" onClick={submitForm} className="btn btn-info mt-3">
-                        Submit
-                    </button>
+                    <button type="button" onClick={submitForm} className="btn btn-info mt-3">Submit</button>
                 </div>
             </div>
         </div>
